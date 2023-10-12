@@ -22,4 +22,4 @@ class multi_host_ssh:
                 username = self.key_files.get(host).get('username')
                 p.create_client(host,username,key,command)
         except ():
-            print("Fail")
+            print("Multihost function failed.")
