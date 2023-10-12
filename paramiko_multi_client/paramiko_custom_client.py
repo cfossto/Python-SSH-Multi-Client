@@ -1,16 +1,16 @@
 import paramiko
 import socket
 
-class paramiko_client:
 
+class ParamikoClient:
 
-    def create_client(self,host,username,key,command):
+    def create_client(self, host, username, key, command):
 
         try:
             parami = paramiko.client
             client = parami.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            client.connect(host,22,username,key_filename=key,timeout=5)
+            client.connect(host, 22, username, key_filename=key, timeout=5)
             (stdin_, stdout_, stderr_) = client.exec_command(command)
             stdout_.channel.recv_exit_status()
             client.close()

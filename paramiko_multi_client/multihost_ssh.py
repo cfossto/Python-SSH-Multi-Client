@@ -1,4 +1,4 @@
-from paramiko_multi_client.paramiko_custom_client import paramiko_client
+from paramiko_multi_client.paramiko_custom_client import ParamikoClient
 
 
 class multi_host_ssh:
@@ -12,7 +12,7 @@ class multi_host_ssh:
     }
 
     def connect_multiple_hosts(self,command):
-        p = paramiko_client()
+        p = ParamikoClient()
         try:
             for host in self.key_files.keys():
                 key = self.key_files.get(host).get('key')
