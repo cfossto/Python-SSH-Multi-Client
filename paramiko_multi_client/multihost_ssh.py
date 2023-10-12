@@ -4,9 +4,6 @@ from paramiko_multi_client.paramiko_custom_client import paramiko_client
 class multi_host_ssh:
     # Prepared for multihost-setup
 
-    #List of hosts
-    hosts = ['micozdtest.lo']
-
     # Unique keyfiles per host
     key_files = {
         'micozdtest.lo': {
@@ -17,7 +14,7 @@ class multi_host_ssh:
     def connect_multiple_hosts(self,command):
         p = paramiko_client()
         try:
-            for host in self.hosts:
+            for host in self.key_files.keys():
                 key = self.key_files.get(host).get('key')
                 username = self.key_files.get(host).get('username')
                 p.create_client(host,username,key,command)
