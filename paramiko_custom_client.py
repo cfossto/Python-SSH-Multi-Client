@@ -2,14 +2,14 @@ import paramiko
 
 class paramiko_client:
 
-    parami = paramiko.client()
 
     def create_client(self,host,username,key,command):
 
         try:
-            client = self.parami.SSHClient()
+            parami = paramiko.client
+            client = parami.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            client.connect(host,username,key,port=22)
+            client.connect(host,22,username,key_filename=key)
             print("before execute")
             (stdin_, stdout_, stderr_) = client.exec_command(command)
             stdout_.channel.recv_exit_status()
@@ -18,5 +18,5 @@ class paramiko_client:
             lines = stdout_.readlines()
             for line in lines:
                 print(line)
-        except:
-            print("Woops")
+        except paramiko.ssh_exception as e:
+            print("Woops from paramiko"+ e)

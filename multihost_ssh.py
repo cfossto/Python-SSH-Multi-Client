@@ -1,25 +1,27 @@
-
-# Prepared for multihost-setup
-
-#List of hosts
-hosts = ['micozdtest.lo']
-
-# Unique keyfiles per host
-key_files = {
-    'micozdtest.lo': {
-        'key':"/Users/christopherfossto/.ssh/id_rsa",
-        "username":'test_user'}
-}
-
-print("List of hosts with keys")
+from paramiko_custom_client import paramiko_client
 
 
-#for hosts in key_files.keys():
-#    print(hosts)
+class multi_host_ssh:
+    # Prepared for multihost-setup
 
-for host in hosts:
-    key = key_files.get(host).get('key')
-    username = key_files.get(host).get('username')
-    print(
-        key + "\n" + username
-    )
+    #List of hosts
+    hosts = ['micozdtest.lo']
+
+    # Unique keyfiles per host
+    key_files = {
+        'micozdtest.lo': {
+            'key':"/Users/christopherfossto/.ssh/id_rsa",
+            "username":'test_user'}
+    }
+
+    def connect_multiple_hosts(self,command):
+        p = paramiko_client()
+        print(command)
+        try:
+            for host in self.hosts:
+                key = self.key_files.get(host).get('key')
+                username = self.key_files.get(host).get('username')
+                p.create_client(host,username,key,command)
+                print(host, username,key,command)
+        except ():
+            print("Fail")

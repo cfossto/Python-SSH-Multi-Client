@@ -1,4 +1,5 @@
-#from paramiko_custom_client import paramiko_client
+import multihost_ssh
 
-#p = paramiko_client
+mhssh = multihost_ssh.multi_host_ssh()
 
+mhssh.connect_multiple_hosts("ls -l /")
