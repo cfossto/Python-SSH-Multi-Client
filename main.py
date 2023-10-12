@@ -1,4 +1,4 @@
-from paramiko_multi_client import multihost_ssh
+from paramiko_multi_client.multihost_ssh import MultiHostSSH
 
 '''
     We are trying out three things here:
@@ -6,7 +6,7 @@ from paramiko_multi_client import multihost_ssh
         2. Connect to a server via Paramiko and custom host-key
         3. Connect to a the same server with asynciossh
 
-        Things are commented out because of testing.
+    Things are commented out because of testing.
 '''
 
 #from sys import argv
@@ -18,7 +18,7 @@ from paramiko_multi_client import multihost_ssh
 #for word in argument:
 #    command = command + word + " "
 
-mhssh = multihost_ssh.multi_host_ssh()
+mhssh = MultiHostSSH()
 
 command = "ls -l /"
 mhssh.connect_multiple_hosts(command)

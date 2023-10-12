@@ -1,7 +1,7 @@
 from paramiko_multi_client.paramiko_custom_client import ParamikoClient
 
 
-class multi_host_ssh:
+class MultiHostSSH:
     # Prepared for multihost-setup
 
     # Unique keyfiles per host
@@ -18,5 +18,5 @@ class multi_host_ssh:
                 key = self.key_files.get(host).get('key')
                 username = self.key_files.get(host).get('username')
                 p.create_client(host,username,key,command)
-        except ():
+        except:
             print("Multihost function failed.")
