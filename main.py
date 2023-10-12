@@ -1,19 +1,23 @@
-import paramiko
+#from paramiko_custom_client import paramiko_client
 
-parami = paramiko.client
+#p = paramiko_client
 
-try:
 
-    client = parami.SSHClient()
-    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-    client.connect("micozdtest.lo",username="test_user",port=22,key_filename="/Users/christopherfossto/.ssh/id_rsa")
-    print("before execute")
-    (stdin_,stdout_,stderr_) = client.exec_command('ls -l /')
-    stdout_.channel.recv_exit_status()
-    print("after execute")
-    client.close()
-    lines = stdout_.readlines()
-    for line in lines:
-        print(line)
-except:
-    print("Woops")
+# Prepared for multihost-setup
+
+#List of hosts
+hosts = ['micozdtest.lo']
+
+# Unique keyfiles per host
+key_files = {
+    'micozdtest.lo': {
+        'key':"/Users/christopherfossto/.ssh/id_rsa",
+        "username":'test_user'}
+}
+
+for host in hosts:
+    key = key_files.get(host).get('key')
+    username = key_files.get(host).get('username')
+    print(
+        key + "\n" + username
+    )
