@@ -1,9 +1,9 @@
 from paramiko_multi_client.paramiko_custom_client import ParamikoClient
 
 
-class MultiHostSSH:
-    # Prepared for multihost-setup
 
+class MultiHostSSH:
+    """ A multihost SSH client that uses RSA-keys for authentication. """
     # Unique keyfiles per host
     # Hosts can also be IPs
     key_files = {
