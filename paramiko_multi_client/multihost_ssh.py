@@ -15,6 +15,7 @@ class MultiHostSSH:
         p = ParamikoClient()
         try:
             for host in self.key_files.keys():
+                print(f"Output from server - {host}:")
                 key = self.key_files.get(host).get('key')
                 username = self.key_files.get(host).get('username')
                 p.create_client(host,username,key,command)

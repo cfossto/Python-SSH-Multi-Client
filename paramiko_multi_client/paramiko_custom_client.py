@@ -18,4 +18,4 @@ class ParamikoClient:
             for line in lines:
                 print(line)
         except socket.error:
-            print("Probably timed out")
+            print(f"{host} probably timed out")
