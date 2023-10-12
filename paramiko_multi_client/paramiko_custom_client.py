@@ -6,7 +6,7 @@ class ParamikoClient:
     """ A custom SSH client that utilizes paramiko to connect to a remote host """
 
     # A custom SSH client
-    def create_client(self, host, username, key, command):
+    def create_client(self, host:str, username:str, key:str, command:str):
 
         try:
             # Instantiate paramiko and set the parameters for connecting.
