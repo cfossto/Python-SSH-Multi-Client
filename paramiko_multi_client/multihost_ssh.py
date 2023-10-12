@@ -1,4 +1,4 @@
-from paramiko_custom_client import paramiko_client
+from paramiko_multi_client.paramiko_custom_client import paramiko_client
 
 
 class multi_host_ssh:

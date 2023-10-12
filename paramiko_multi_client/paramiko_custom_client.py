@@ -19,7 +19,5 @@ class paramiko_client:
             lines = stdout_.readlines()
             for line in lines:
                 print(line)
-        except paramiko.ssh_exception as e:
-            print("Woops from paramiko"+ e)
         except socket.error:
-            print("probably timed out")
+            print("Probably timed out")
