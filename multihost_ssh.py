@@ -16,12 +16,10 @@ class multi_host_ssh:
 
     def connect_multiple_hosts(self,command):
         p = paramiko_client()
-        print(command)
         try:
             for host in self.hosts:
                 key = self.key_files.get(host).get('key')
                 username = self.key_files.get(host).get('username')
                 p.create_client(host,username,key,command)
-                print(host, username,key,command)
         except ():
             print("Fail")

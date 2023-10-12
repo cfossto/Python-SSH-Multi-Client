@@ -1,4 +1,5 @@
 import paramiko
+import socket
 
 class paramiko_client:
 
@@ -9,7 +10,7 @@ class paramiko_client:
             parami = paramiko.client
             client = parami.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-            client.connect(host,22,username,key_filename=key)
+            client.connect(host,22,username,key_filename=key,timeout=5)
             print("before execute")
             (stdin_, stdout_, stderr_) = client.exec_command(command)
             stdout_.channel.recv_exit_status()
@@ -20,3 +21,5 @@ class paramiko_client:
                 print(line)
         except paramiko.ssh_exception as e:
             print("Woops from paramiko"+ e)
+        except socket.error:
+            print("probably timed out")
