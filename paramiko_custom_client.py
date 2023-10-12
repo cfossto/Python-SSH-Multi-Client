@@ -4,14 +4,14 @@ class paramiko_client:
 
     parami = paramiko.client()
 
-    def create_client(self,host,username,key):
+    def create_client(self,host,username,key,command):
 
         try:
             client = self.parami.SSHClient()
             client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
             client.connect(host,username,key,port=22)
             print("before execute")
-            (stdin_, stdout_, stderr_) = client.exec_command('ls -l /')
+            (stdin_, stdout_, stderr_) = client.exec_command(command)
             stdout_.channel.recv_exit_status()
             print("after execute")
             client.close()
