@@ -1,4 +1,5 @@
 from paramiko_multi_client.paramiko_custom_client import ParamikoClient
+from os import environ
 
 
 class MultiHostSSH:
@@ -10,7 +11,7 @@ class MultiHostSSH:
         # Host
         'micozdtest.lo': {
             # Host key
-            'key': "/Users/christopherfossto/.ssh/id_rsa",
+            'key': f"{environ.get('micozdtest-key')}",
             # Username to connect with
             "username": 'test_user'}
     }
