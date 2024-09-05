@@ -1,6 +1,6 @@
-from host_logic.compile_hosts import CompileHosts
-from host_logic.target_hosts import TargetHosts
-from paramiko_multi_client.multihost_ssh import MultiHostSSH
+from compile_hosts import CompileHosts
+from target_hosts import TargetHosts
+from multihost_ssh import MultiHostSSH
 from sys import argv
 
 

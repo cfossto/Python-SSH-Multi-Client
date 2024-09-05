@@ -1,7 +1,5 @@
-from paramiko_multi_client.paramiko_custom_client import ParamikoClient
+from paramiko_custom_client import ParamikoClient
 from os import environ
-from host_logic.target_hosts import TargetHosts
-from host_logic.compile_hosts import CompileHosts
 
 
 class MultiHostSSH:
