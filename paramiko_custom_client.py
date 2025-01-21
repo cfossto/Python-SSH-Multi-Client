@@ -3,21 +3,33 @@ import socket
 
 
 class ParamikoClient:
-    def create_client(self, host:str, username:str, key:str, command:str):
+
+    def __init__(self):
+        self.host = ""
+        self.port = 22
+        self.username = ""
+        self.key = ""
+
+    def create_client(self):
+        pass
+
+    def execute_command(self, command):
 
         try:
-            parami = paramiko.client
-            client = parami.SSHClient()
-            client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-
-            client.connect(host, 22, username, key_filename=key, timeout=5)
-            (stdin_, stdout_, stderr_) = client.exec_command(command)
+            p = paramiko.client.SSHClient()
+            p.connect(
+                hostname=self.host,
+                port=self.port,
+                username=self.username,
+                key_filename=self.key
+            )
+            (stdin_, stdout_, stderr_) = p.exec_command(command)
             stdout_.channel.recv_exit_status()
-            client.close()
-            
+            p.close()
+
             lines = stdout_.readlines()
             for line in lines:
                 print(line)
-                
+
         except socket.error:
-            print(f"{host} probably timed out")
+            print(f"{self.host} probably timed out")
