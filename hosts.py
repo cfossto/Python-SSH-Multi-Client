@@ -22,6 +22,7 @@ class Hosts:
         hosts = host_list
 
         for i in hosts:
-            self.host_list.append(i)
+            if i == dict:
+                self.host_list.append(i)
 
         conf_file.close()
