@@ -1,0 +1,9 @@
+---
+host1:
+  target_ip: 192.168.1.223
+  hostname: "test"
+  target_domain_name: ""
+host2:
+  target_ip: 192.168.1.224
+  host_hostname: "test"
+  target_domain_name: "host2-test"
