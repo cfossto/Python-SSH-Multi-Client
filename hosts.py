@@ -15,14 +15,13 @@ class Hosts:
         }
         self.host_list.append(target)
 
-    def get_hosts_from_config(self):
-        conf_file = open("hosts.yaml", "r")
+    def get_hosts_from_config(self, filepath):
+        conf_file = open(filepath, "r")
         host_list = yaml.load(conf_file, Loader=yaml.BaseLoader)
 
         hosts = host_list
 
-        for i in hosts:
-            if i == dict:
-                self.host_list.append(i)
+        for host in hosts:
+            self.host_list.append(hosts[host])
 
         conf_file.close()
